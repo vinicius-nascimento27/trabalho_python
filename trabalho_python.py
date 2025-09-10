@@ -12,14 +12,6 @@ from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, sum as spark_sum
 
 
-Lista de tipos de veículo a remover (inclusive OUTROS)
-remover = ["não informado", "NAO INFORMADO", "NÃO INFORMADO",
-           "TRATOR DE RODAS", "TRATOR DE RODAS ", "MOTOR CASA",
-           "TRICICLO", "OUTROS"]
-
-Filtrar mantendo apenas quem NÃO está na lista
-df_filtrado = df[~df["TIPO_VEICULO"].isin(remover)]
-
 # -------- 1) LEITURA (Pandas) --------
 # coloque o nome exato do seu arquivo .csv aqui:
 df = pd.read_csv("infracoes_veiculos_2024.csv", sep=None, engine="python", encoding="utf-8")
@@ -37,6 +29,14 @@ df = df.rename(columns={
     "TIPO": "TIPO_REGISTRO",                # manual, radar etc.
     "AIT": "QTD_INFRACOES"                  # quantidade de autos
 })
+
+Lista de tipos de veículo a remover (inclusive OUTROS)
+remover = ["não informado", "NAO INFORMADO", "NÃO INFORMADO",
+           "TRATOR DE RODAS", "TRATOR DE RODAS ", "MOTOR CASA",
+           "TRICICLO", "OUTROS"]
+
+Filtrar mantendo apenas quem NÃO está na lista
+df_filtrado = df[~df["TIPO_VEICULO"].isin(remover)]
 
 # -------- 3) LIMPEZA (tipagem + filtro 2024 + remoção de nulos) --------
 df["ANO_MES"] = pd.to_numeric(df["ANO_MES"], errors="coerce")
