@@ -11,6 +11,15 @@ import matplotlib.pyplot as plt
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, sum as spark_sum
 
+
+Lista de tipos de veículo a remover (inclusive OUTROS)
+remover = ["não informado", "NAO INFORMADO", "NÃO INFORMADO",
+           "TRATOR DE RODAS", "TRATOR DE RODAS ", "MOTOR CASA",
+           "TRICICLO", "OUTROS"]
+
+Filtrar mantendo apenas quem NÃO está na lista
+df_filtrado = df[~df["TIPO_VEICULO"].isin(remover)]
+
 # -------- 1) LEITURA (Pandas) --------
 # coloque o nome exato do seu arquivo .csv aqui:
 df = pd.read_csv("infracoes_veiculos_2024.csv", sep=None, engine="python", encoding="utf-8")
