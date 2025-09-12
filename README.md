@@ -1,4 +1,4 @@
-#Trabalho infrações de veículos em 2024
+# Trabalho infrações de veículos em 2024
 
 Esse projeto realiza uma análise dos dados de infrações de trânsito por tipo de veículo no ano de 2024, utilizando as bibliotecas Python, Pandas, PySpark, NumPy e Matplotlib com os dados do DETRAN RJ.
 
