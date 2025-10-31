@@ -1,9 +1,6 @@
 # ==================================================
-# ANÁLISE DE INFRAÇÕES DE VEÍCULOS 2024 (PANDAS - Colab)
+# ANÁLISE DE INFRAÇÕES DE VEÍCULOS 2024
 # ==================================================
-
-# Instalação de bibliotecas necessárias (somente 1x por sessão)
-!pip install pandas numpy matplotlib --quiet  # ← instala as bibliotecas pandas, numpy e matplotlib de forma silenciosa
 
 # Importações de bibliotecas
 import os                              # ← manipulação de arquivos e diretórios
