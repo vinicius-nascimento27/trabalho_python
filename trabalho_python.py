@@ -89,8 +89,6 @@ print(f"Mínimo: {minimo}\n")
 # ==================================================
 regioes_agrupadas = (df_filtrado.groupby("REGIAO")["QTD_INFRACOES"].sum().reset_index())  # ← soma infrações por região
 regioes_agrupadas = regioes_agrupadas.sort_values("REGIAO")  # ← ordena por nome da região
-regioes_agrupadas.to_csv("infracoes_por_regiao.csv", index=False, encoding="utf-8-sig")  # ← salva arquivo CSV
-print("✅ Arquivo 'infracoes_por_regiao.csv' salvo com sucesso.\n")
 
 # ==================================================
 # FUNÇÃO: GRÁFICO DE BARRAS (formatado)
