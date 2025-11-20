@@ -59,9 +59,10 @@ total_infracoes_regioes = df.groupby("REGIAO")["QTD_INFRACOES"].sum()  # ← som
 regioes_com_2000_ou_mais = total_infracoes_regioes[total_infracoes_regioes >= 2000].index  # ← seleciona regiões com ≥2000
 df_filtrado = df[df["REGIAO"].isin(regioes_com_2000_ou_mais)].copy()  # ← mantém apenas essas regiões
 
-# ==================================================
+# ===========================================================
 # DISTRIBUIÇÃO DE FREQUÊNCIA (PANDAS)
-# ==================================================
+# ===========================================================
+
 freq_pd = df.groupby("TIPO_VEICULO")["QTD_INFRACOES"].sum().reset_index().rename(columns={"QTD_INFRACOES":"TOTAL_INFRACOES"})  # ← soma por tipo de veículo
 freq_pd = freq_pd.sort_values("TOTAL_INFRACOES", ascending=False)  # ← ordena do maior para o menor
 print("\n📊 Distribuição de Frequência por Tipo de Veículo (top rows):")  # ← exibe cabeçalho
@@ -150,7 +151,7 @@ if len(mensal) >= 2:
     plt.scatter(mensal["mes_idx"], mensal["QTD_INFRACOES"], label="Observado")  # ← pontos observados
     plt.plot(mensal["mes_idx"], mensal["pred"], label="Tendência", color="red")  # ← linha da tendência
     plt.title("Tendência Mensal de Infrações")  # ← título
-    plt.xlabel("Índice de mês (1..n)")          # ← eixo X
+    plt.xlabel("Índice de mês")                # ← eixo X
     plt.ylabel("Total de Infrações")            # ← eixo Y
     plt.legend()                               # ← legenda
     plt.tight_layout()                         # ← ajuste automático
